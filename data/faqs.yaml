@@ -1,0 +1,489 @@
+# Veent Tix FAQ Data
+# Source: https://www.veent.io/ (scraped March 2026)
+# This is the initial knowledge base for the Veent Tix chatbot.
+
+faqs:
+  # ============================================================
+  # GENERAL / ABOUT
+  # ============================================================
+
+  - question: "What is Veent Tix?"
+    answer: "Veent Tix is an online ticketing platform operated by Veent Apps Inc. It allows event organizers to create, promote, and sell tickets for concerts, festivals, workshops, fun runs, and other live events. Customers can easily browse upcoming events, purchase tickets through a secure payment system, and receive their tickets digitally via email or their Veent Tix account."
+    category: "general"
+
+  - question: "What does Veent Tix do?"
+    answer: "Veent Tix is the ultimate platform for event organizers and attendees. Whether you're hosting concerts, conferences, or local gatherings, Veent Tix handles your tickets, attendees, and check-in process — so organizers can focus on delivering the experience. Customers can explore and book tickets to events seamlessly."
+    category: "general"
+
+  - question: "How does Veent Tix work?"
+    answer: "Veent Tix operates as an intermediary that connects event organizers and ticket holders through a secure online ticketing system. Organizers create and manage event listings, set pricing, and distribute tickets electronically. Customers browse upcoming events, purchase digital tickets, and receive confirmations via email or their Veent Tix account. At the event, attendees present their digital ticket (QR code) or a printed copy for entry."
+    category: "general"
+
+  - question: "Who operates Veent Tix?"
+    answer: "Veent Tix is operated and managed by Veent Apps Inc. The platform is based in the Philippines with jurisdiction in Cagayan de Oro City, Misamis Oriental."
+    category: "general"
+
+  - question: "Is Veent Tix the event organizer?"
+    answer: "No. Veent Tix does not organize, operate, or manage the events listed on the platform unless explicitly stated otherwise. Veent's role is limited to providing the technological framework and payment infrastructure for ticket transactions. All responsibilities related to the event (content, scheduling, pricing, fulfillment) lie with the event organizer."
+    category: "general"
+
+  # ============================================================
+  # FEATURES & SERVICES
+  # ============================================================
+
+  - question: "What features does Veent Tix offer for event organizers?"
+    answer: "Veent Tix offers organizers: (1) Easy Event Setup — tools designed to transform your event management experience, (2) Advanced Ticketing — flexible ticket types, early bird pricing, and promotional codes, (3) Secure Payments — enterprise-grade security with industry-leading encryption, (4) Real-Time Analytics — track sales, attendance, and engagement metrics in real-time, and (5) Marketing Tools — integrated email campaigns, social sharing, and promotional features."
+    category: "features"
+
+  - question: "What types of events can I create on Veent Tix?"
+    answer: "You can create various types of events including concerts, fun runs, festivals, conferences, workshops, private gatherings, and more. The contact form lists supported event types as: Concert, Fun Run, Festival, Conference, Workshop, Private Gathering, and Other."
+    category: "features"
+
+  - question: "Does Veent Tix have analytics or reporting?"
+    answer: "Yes! Veent Tix offers Real-Time Analytics that let you make informed decisions with powerful insights. You can track sales, attendance, and engagement metrics in real-time through the platform dashboard."
+    category: "features"
+
+  - question: "Does Veent Tix have marketing tools?"
+    answer: "Yes. Veent Tix includes integrated marketing tools to help you reach more attendees. This includes email campaigns, social sharing features, and promotional tools built right into the platform."
+    category: "features"
+
+  - question: "What ticketing options are available?"
+    answer: "Veent Tix offers Advanced Ticketing with flexible ticket types, early bird pricing, and promotional codes. Organizers can set up multiple ticket tiers (e.g., VVIP, VIP, Platinum, Premium, Lower Balcony, Upper Balcony) with different price points. Some ticket types support seat selection."
+    category: "features"
+
+  # ============================================================
+  # TICKETS & PURCHASING
+  # ============================================================
+
+  - question: "How do I buy tickets on Veent Tix?"
+    answer: "To buy tickets, browse events on the Veent Tix website at www.veent.io/discover, select the event you're interested in, choose your ticket type and quantity, and complete your purchase through our secure payment system. You'll need a Veent Tix account to complete the purchase."
+    category: "tickets"
+
+  - question: "How will I receive my tickets after purchasing?"
+    answer: "Once you've completed your purchase, your tickets will be delivered automatically to your registered email address and also accessible through your Veent Tix account under 'My Tickets.' You may present your digital ticket (QR code) at the event entrance, or if preferred, print a physical copy. Please ensure your email and account details are accurate before completing your order to avoid delivery issues."
+    category: "tickets"
+
+  - question: "What do I need to bring to the event?"
+    answer: "You need to present a valid copy of your ticket, either printed or digital (QR code), at the event entrance. Admission may also require a government-issued photo identification card (ID) that matches the name on the ticket."
+    category: "tickets"
+
+  - question: "What if I lose my ticket?"
+    answer: "You can access your tickets anytime through your Veent Tix account dashboard under 'My Tickets.' However, Veent is not responsible for lost, deleted, stolen, or damaged tickets once delivered. Make sure to keep your digital ticket accessible on your device or print a backup copy."
+    category: "tickets"
+
+  - question: "Are ticket sales final?"
+    answer: "Yes. All ticket purchases made through Veent Tix are considered final, binding, and strictly non-refundable. Once a transaction has been completed and a confirmation has been issued, no refunds, reversals, or exchanges shall be granted."
+    category: "tickets"
+
+  # ============================================================
+  # PAYMENTS
+  # ============================================================
+
+  - question: "What payment methods does Veent Tix accept?"
+    answer: "Veent Tix accepts the following payment methods: Maya, Visa (credit/debit cards), GCash, and Bank Transfer. All payments are processed securely through trusted payment partners with enterprise-grade encryption."
+    category: "payments"
+
+  - question: "Is my payment information secure?"
+    answer: "Yes. Veent Tix uses enterprise-grade security with industry-leading encryption to protect your payment data. The platform employs SSL encryption, firewalls, secure cloud hosting, role-based access controls, and regular system updates and audits to protect your data from unauthorized access."
+    category: "payments"
+
+  # ============================================================
+  # REFUND POLICY
+  # ============================================================
+
+  - question: "Can I get a refund for my ticket?"
+    answer: "All sales made through Veent Tix are final and non-refundable. We follow a strict No Refund Policy, which means once a ticket has been purchased, we cannot offer refunds, cancellations, or exchanges for any reason — including changes in your personal schedule, transportation issues, illness, dissatisfaction with the event, or weather conditions."
+    category: "refund"
+
+  - question: "Can I request a refund or exchange after purchasing a ticket?"
+    answer: "All sales made through Veent Tix are final and non-refundable. We follow a strict No Refund Policy, which means once a ticket has been purchased, we cannot offer refunds, cancellations, or exchanges for any reason — including changes in your personal schedule, transportation issues, illness, dissatisfaction with the event, or weather conditions. However, in the rare case that an event is officially canceled by the organizer, any refund requests will be handled directly by the event organizer according to their own refund policy. Veent Tix is not responsible for processing refunds unless explicitly stated otherwise."
+    category: "refund"
+
+  - question: "What is Veent Tix's refund policy?"
+    answer: "Veent Tix has a strict No Refund Policy. All ticket purchases are considered final, binding, and non-refundable. No refunds, reversals, or exchanges will be granted for any reason, including: personal schedule conflicts, travel delays, changes of mind, illness, dissatisfaction with the event, or unforeseen circumstances like weather disruptions. Veent Tix is a service intermediary — all proceeds (after fees) go directly to the organizer."
+    category: "refund"
+
+  # ============================================================
+  # EVENT CHANGES & CANCELLATIONS
+  # ============================================================
+
+  - question: "What happens if an event is postponed or rescheduled?"
+    answer: "If an event is postponed or rescheduled, your existing ticket will remain valid for the new date or venue. Veent Tix will send you an email notification once the organizer finalizes the updated details."
+    category: "events"
+
+  - question: "What happens if an event is canceled?"
+    answer: "If an event is fully canceled, the event organizer is responsible for handling any refund requests or alternative solutions, such as event credits or rescheduled access. Veent Tix serves only as a ticketing service provider and does not control event decisions or refund timelines. Veent Tix shall not be held liable for refunds or damages resulting from event cancellations."
+    category: "events"
+
+  - question: "What happens if the event is postponed, rescheduled, or canceled?"
+    answer: "If an event is postponed or rescheduled, your existing ticket will remain valid for the new date or venue. Veent Tix will send you an email notification once the organizer finalizes the updated details. If the event is fully canceled, the event organizer is responsible for handling any refund requests or alternative solutions, such as event credits or rescheduled access. Veent Tix serves only as a ticketing service provider and does not control event decisions or refund timelines."
+    category: "events"
+
+  # ============================================================
+  # ACCOUNT
+  # ============================================================
+
+  - question: "Do I need an account to buy tickets?"
+    answer: "Yes. Users must create a Veent Tix account to access certain features, including ticket purchases, event creation, and management tools. During registration, you must provide complete, accurate, and truthful information."
+    category: "account"
+
+  - question: "How do I create an account?"
+    answer: "You can create an account by visiting v2.veent.io/sign-in and following the registration process. You'll need to provide your full name, email address, and other required details."
+    category: "account"
+
+  - question: "What if my account is compromised?"
+    answer: "If you suspect any unauthorized access or account compromise, you must immediately notify Veent's support team at support@veenttix.com. You should not share your password with others or use another user's account without authorization."
+    category: "account"
+
+  # ============================================================
+  # CONTACT & SUPPORT
+  # ============================================================
+
+  - question: "How can I contact Veent Tix for support?"
+    answer: "You can reach our support team by sending an email to support@veenttix.com. Please include your full name, registered email address, and ticket order ID (if applicable) for faster assistance. Our customer support team is available Monday to Saturday, 9:00 AM to 6:00 PM (PHT), and we aim to respond to all inquiries within 24 to 48 hours."
+    category: "support"
+
+  - question: "What is Veent Tix's email address?"
+    answer: "For general inquiries, you can email hello@veent.io. For support issues (account problems, ticket purchases, event information), email support@veenttix.com. For privacy-related concerns, contact privacy@veenttix.com."
+    category: "support"
+
+  - question: "What are Veent Tix's support hours?"
+    answer: "Our customer support team is available Monday to Saturday, 9:00 AM to 6:00 PM (PHT — Philippine Time). We aim to respond to all inquiries within 24 to 48 hours."
+    category: "support"
+
+  - question: "How do I contact Veent Tix as an event organizer?"
+    answer: "If you're an event organizer interested in using Veent Tix, visit www.veent.io/contacts and fill out the inquiry form. You'll need to provide your name, email, company name, phone number, the type of event you're planning (Concert, Fun Run, Festival, Conference, Workshop, Private Gathering, or Other), and details about your inquiry."
+    category: "support"
+
+  # ============================================================
+  # SOCIAL MEDIA
+  # ============================================================
+
+  - question: "Where can I find Veent Tix on social media?"
+    answer: "You can find Veent Tix on the following social media platforms: Facebook (facebook.com/veent.io), Instagram (@veent.tix), LinkedIn (linkedin.com/company/veent), and TikTok (@veent_tix)."
+    category: "social"
+
+  # ============================================================
+  # PARTNERS
+  # ============================================================
+
+  - question: "Who are Veent Tix's partners?"
+    answer: "Veent Tix has partnered with numerous organizations and event producers including: Philippines South, 21 Run Salute, 90db Production, Adonis, Ben and Ben, Bicycle King Bike Shop, Brigada, Cantilan, CDOBF, Circle Production, Dasal, DICT, Dionela, EKG, QLR, Empower, Events Pro, Feastcon, FIFA, FIGO, Pet Essentials, Great White, IBOTP, Kagay Outdoors, Kumbira, Limketkai, Liveloud, Nexus, OCC, Social Slang, Tagaytay Run Club, The Samdhana Institute, and Ubiquity."
+    category: "partners"
+
+  # ============================================================
+  # PRIVACY & DATA
+  # ============================================================
+
+  - question: "How does Veent Tix handle my personal data?"
+    answer: "Veent Tix collects and processes personal data in compliance with the Philippine Data Privacy Act of 2012 and the guidelines of the National Privacy Commission (NPC). We collect information you provide (full name, email, contact number, payment info, event preferences) and non-personal data (browser type, device info, IP address). Your data is stored securely using encrypted databases with restricted access and is kept only as long as needed."
+    category: "privacy"
+
+  - question: "What information does Veent Tix collect?"
+    answer: "Veent Tix collects personal information you voluntarily provide: full name, email address, contact number, payment information (processed securely through trusted payment partners), and event preferences or purchase history. We also collect non-personal data such as browser type, device information, IP address, and usage data for analytics and service improvement."
+    category: "privacy"
+
+  - question: "Does Veent Tix sell my personal information?"
+    answer: "No. Veent Tix does not sell or trade your personal information. However, we may share limited data with event organizers (to verify ticket purchases), payment partners (for secure transactions), and service providers (for hosting, analytics, and email communication). All third parties are bound by confidentiality and data protection agreements."
+    category: "privacy"
+
+  - question: "What are my data privacy rights?"
+    answer: "Under the Data Privacy Act of 2012, you have the right to access, correct, or delete your personal data, withdraw consent at any time, and file a complaint with the National Privacy Commission (NPC). To exercise these rights, contact the Data Protection Officer at privacy@veenttix.com."
+    category: "privacy"
+
+  - question: "Where is my data stored?"
+    answer: "Your data is stored securely using encrypted databases and restricted access. Veent Tix uses SSL encryption, firewalls, secure cloud hosting, role-based access controls, and regular system updates and audits to protect your information."
+    category: "privacy"
+
+  # ============================================================
+  # LEGAL / TERMS
+  # ============================================================
+
+  - question: "Where can I find Veent Tix's terms and conditions?"
+    answer: "You can find the full Terms and Conditions at www.veent.io/terms-condition. The terms cover ticket purchases, refund policy, account obligations, event organizer responsibilities, privacy, intellectual property, and more."
+    category: "legal"
+
+  - question: "Where can I find Veent Tix's privacy policy?"
+    answer: "You can find the full Data & Privacy Policy at www.veent.io/data-privacy. It covers what information we collect, how we use it, data sharing practices, storage, your rights as a data subject, and security measures."
+    category: "legal"
+
+  - question: "What is prohibited on the Veent Tix platform?"
+    answer: "The following activities are prohibited on Veent Tix: reselling, duplicating, or counterfeiting tickets; uploading malicious software or harmful code; impersonating any person or misrepresenting your affiliation; circumventing payment or security systems; and using the platform for spam, phishing, or any fraudulent activity. Violations may result in permanent account suspension, ticket cancellation without refund, and potential legal action."
+    category: "legal"
+
+  # ============================================================
+  # EVENTS DISCOVERY
+  # ============================================================
+
+  - question: "How can I find upcoming events?"
+    answer: "You can browse upcoming events by visiting www.veent.io/discover. The page shows a list of upcoming events sorted by date, including concerts, fun runs, festivals, and more. You can also check the homepage at www.veent.io for recommended events."
+    category: "events"
+
+  - question: "What kinds of events are on Veent Tix?"
+    answer: "Veent Tix hosts a wide variety of events including concerts (e.g., Lani Misalucha, TJ Monterde and KZ Tandingan), fun runs and trail runs (e.g., The Alfonso Ridge Challenge, Dahilayan Mountain Trail Ultra, Challenger Run), marathons, festivals (e.g., Magdiwata Festival, The Feast), charity runs, and more."
+    category: "events"
+
+  # ============================================================
+  # ORGANIZER-SPECIFIC
+  # ============================================================
+
+  - question: "How do I create an event on Veent Tix?"
+    answer: "To create an event on Veent Tix, click the 'Create Event' button on the homepage or contact the Veent Tix team through the contact form at www.veent.io/contacts. You can set up your event details, ticket types, pricing, and promotional codes through the organizer dashboard."
+    category: "organizer"
+
+  - question: "What are my responsibilities as an event organizer?"
+    answer: "Organizers are fully responsible for all aspects of their events, including event content, pricing, scheduling, promotions, and compliance with local laws. Veent merely provides the digital infrastructure for ticket sales and event visibility. Organizers must ensure that their event listings contain truthful, non-misleading information and that events proceed as advertised. Disputes between organizers and ticket holders are handled directly between those parties."
+    category: "organizer"
+
+  # ============================================================
+  # TESTIMONIALS (for context)
+  # ============================================================
+
+  - question: "What do people say about Veent Tix?"
+    answer: "Here's what our users say: Honey Garciano said 'VEENT made our event so easy to handle. Registrations were smooth, and having multiple payment methods really helped our attendees a lot!' Noemi Quinto shared 'Veent has really made my work as an event organizer so much easier! It helped me manage my registrants smoothly and kept everything organized.' Michelle Torres noted 'The secure payment system gave our customers peace of mind. Plus, the marketing tools really helped us reach a wider audience and boost sales.'"
+    category: "general"
+
+  - question: "Is Veent Tix trusted?"
+    answer: "Yes. Veent Tix is a trusted ticketing platform used by numerous event organizers and partners across the Philippines. Our platform features enterprise-grade security, secure payment processing, and has received positive testimonials from organizers like Honey Garciano, Noemi Quinto, and Michelle Torres praising the smooth registration process, easy management, and secure payments."
+    category: "general"
+
+  # ============================================================
+  # WEBSITE NAVIGATION — HOW TO DO THINGS
+  # ============================================================
+
+  # --- Buying Tickets (step-by-step) ---
+
+  - question: "How do I buy a ticket?"
+    answer: "To buy a ticket on Veent Tix, follow these steps: (1) Go to www.veent.io and click 'Explore Events' in the top navigation bar, or click 'Book Your Ticket' on the homepage — both take you to the Discover page at www.veent.io/discover. (2) Browse the list of upcoming events and click on the event you want to attend. (3) On the event page, scroll down to the 'Book Your Ticket Now' section. (4) Choose your ticket type (e.g., VVIP, VIP, General Admission) and select your quantity using the + and - buttons. For events with seat selection, click 'Select Seats' to choose specific seats. (5) Click 'Next' to proceed to checkout. (6) Log in or create a Veent Tix account if you haven't already. (7) Complete payment using Maya, Visa, GCash, or Bank Transfer. (8) Your digital ticket with a QR code will be sent to your email and available under 'My Tickets' in your account dashboard."
+    category: "navigation"
+
+  - question: "I want to book tickets for an event"
+    answer: "To book tickets: (1) Visit www.veent.io and click 'Explore Events' in the top navigation bar, or click 'Book Your Ticket' on the homepage. (2) On the Discover page (www.veent.io/discover), find and click the event you'd like to attend. (3) On the event page, scroll down to 'Book Your Ticket Now.' (4) Select your ticket type and quantity, then click 'Next.' (5) Log in to your account (or create one at v2.veent.io/sign-in). (6) Complete payment via Maya, Visa, GCash, or Bank Transfer. Your ticket will be emailed to you and appear under 'My Tickets' in your dashboard."
+    category: "navigation"
+
+  - question: "Where do I click to purchase a ticket?"
+    answer: "From any page on www.veent.io, click 'Explore Events' in the top navigation bar to go to the Discover page. Then click on the event you want. On the event page, scroll down to the 'Book Your Ticket Now' section, choose your ticket type and quantity, and click 'Next' to proceed to checkout. You can also click 'Book Your Ticket' on the homepage hero section to go straight to the Discover page."
+    category: "navigation"
+
+  # --- Finding / Browsing Events ---
+
+  - question: "How do I find events on the website?"
+    answer: "There are several ways to find events: (1) Click 'Explore Events' in the top navigation bar on any page — this takes you to www.veent.io/discover where all upcoming events are listed by date. (2) On the homepage (www.veent.io), scroll down to the 'Recommended Events' section to see featured upcoming events. Click 'Explore for more' to see all events. (3) Each event card shows the event name and date. Click on any event to see its full details, ticket options, and pricing."
+    category: "navigation"
+
+  - question: "Where can I browse all upcoming events?"
+    answer: "Click 'Explore Events' in the top navigation bar on any page, or go directly to www.veent.io/discover. This page shows all upcoming events sorted by date (newest first). Each event card displays the event name and date. Events that have passed are marked 'ENDED.' Click 'See More Events' at the bottom to load older events."
+    category: "navigation"
+
+  - question: "I want to see what events are available"
+    answer: "To see available events, click 'Explore Events' in the top navigation bar at the top of the page. This takes you to the Discover page (www.veent.io/discover) where all upcoming events are listed. You can also scroll down on the homepage to see 'Recommended Events.' Click any event to view its full details, including dates, venue, ticket types, and pricing."
+    category: "navigation"
+
+  # --- Logging In / Signing Up ---
+
+  - question: "How do I log in to my account?"
+    answer: "Click the 'LOGIN' button in the top-right corner of the navigation bar on any page. This takes you to the sign-in page at v2.veent.io/sign-in. You can sign in using 'Continue with Google' or enter your email and password. After signing in, you'll have access to your Dashboard and Wallet."
+    category: "navigation"
+
+  - question: "How do I sign up for an account?"
+    answer: "Click the 'LOGIN' button in the top-right corner of the navigation bar, then on the sign-in page (v2.veent.io/sign-in), click the 'Sign up' link. Follow the registration process by providing your full name, email address, and other required details. You'll receive a confirmation email to verify your account."
+    category: "navigation"
+
+  - question: "Where is the login button?"
+    answer: "The 'LOGIN' button is located in the top-right corner of the navigation bar. It appears on every page of the website. Clicking it takes you to v2.veent.io/sign-in where you can sign in with Google or your email and password, or sign up for a new account."
+    category: "navigation"
+
+  - question: "I want to create a Veent Tix account"
+    answer: "To create an account: (1) Click the 'LOGIN' button in the top-right corner of the navigation bar on any page. (2) On the sign-in page (v2.veent.io/sign-in), click the 'Sign up' link. (3) Provide your full name, email address, and other required details. (4) Check your email for a verification link and confirm your account. Once verified, you can log in and start browsing events, purchasing tickets, and managing your dashboard."
+    category: "navigation"
+
+  # --- Viewing Tickets / Dashboard ---
+
+  - question: "How do I view my tickets?"
+    answer: "To view your purchased tickets: (1) Click 'LOGIN' in the top-right corner of the navigation bar and sign in to your account at v2.veent.io/sign-in. (2) Once logged in, go to your Dashboard. (3) Click on 'My Tickets' to see all your purchased tickets with their QR codes. You can show the QR code on your phone at the event entrance, or print a copy."
+    category: "navigation"
+
+  - question: "Where can I find my tickets after buying?"
+    answer: "Your tickets are in two places: (1) Check your email — a digital ticket with a QR code is automatically sent to your registered email after purchase. (2) Log in to your Veent Tix account at v2.veent.io/sign-in, then navigate to your Dashboard and click 'My Tickets.' All your purchased tickets with QR codes are stored there."
+    category: "navigation"
+
+  - question: "How do I access my dashboard?"
+    answer: "To access your dashboard: (1) Click the 'LOGIN' button in the top-right corner of the navigation bar. (2) Sign in at v2.veent.io/sign-in using your Google account or email and password. (3) After signing in, you'll be taken to your Dashboard where you can access 'My Tickets,' your Wallet, and account settings."
+    category: "navigation"
+
+  - question: "I want to check my wallet"
+    answer: "To check your wallet: (1) Click the 'LOGIN' button in the top-right corner of the navigation bar. (2) Sign in to your account at v2.veent.io/sign-in. (3) Once logged in, your Wallet is accessible from your Dashboard. The wallet shows your balance and transaction history."
+    category: "navigation"
+
+  # --- Selecting Seats ---
+
+  - question: "How do I select seats for an event?"
+    answer: "Not all events have seat selection — it depends on the ticket type. To select seats: (1) Go to the event page by finding the event on the Discover page (www.veent.io/discover) and clicking on it. (2) Scroll down to 'Book Your Ticket Now.' (3) For ticket types that support seat selection (like VVIP or VIP), you'll see a 'Select Seats' button next to the ticket tier. Click it to open the seat map. (4) Choose your preferred seats from the available options. (5) Click 'Next' to proceed to checkout. For general admission tickets, there's no seat selection — just use the + and - buttons to choose your quantity."
+    category: "navigation"
+
+  # --- Contacting Support / Organizer ---
+
+  - question: "How do I contact Veent Tix from the website?"
+    answer: "There are several ways: (1) Click 'Contacts' in the top navigation bar to go to the contact form at www.veent.io/contacts (this is primarily for event organizers). (2) Scroll to the bottom of any page and find 'Contact Us' in the footer Quick Links. (3) For support issues, email support@veenttix.com directly. (4) For general inquiries, email hello@veent.io. You can also find social media links in the footer: Facebook, Instagram, LinkedIn, and TikTok."
+    category: "navigation"
+
+  - question: "How do I contact the event organizer?"
+    answer: "To contact the event organizer, go to the specific event page. Scroll down past the ticket selection area and look for the 'Need Help? Contact Us' section. This displays the organizer's contact information, which may include their name, phone number, email address, or social media links. Each event has different organizer contact details."
+    category: "navigation"
+
+  - question: "Where is the contact page?"
+    answer: "Click 'Contacts' in the top navigation bar on any page, or go directly to www.veent.io/contacts. This page has a form for event organizers to get in touch with the Veent Tix team. Fill in your First Name, Last Name, Email, Company Name, Phone Number (optional), Event Type, and Inquiry Details, then submit. For customer support, email support@veenttix.com instead."
+    category: "navigation"
+
+  # --- Creating Events (Organizer) ---
+
+  - question: "How do I create an event on the website?"
+    answer: "To get started creating an event: (1) On the homepage (www.veent.io), click the 'Create Event' button in the hero section — this takes you to the login/sign-in page. (2) Alternatively, click 'Contacts' in the top navigation bar and go to www.veent.io/contacts. (3) Fill out the inquiry form with your name, email, company name, event type (Concert, Fun Run, Festival, Conference, Workshop, Private Gathering, or Other), and inquiry details. (4) The Veent Tix team will contact you to set up your event. Once approved, you can manage your event, set ticket tiers, pricing, and promotional codes through the organizer dashboard."
+    category: "navigation"
+
+  - question: "I want to host an event on Veent Tix"
+    answer: "To host an event on Veent Tix: (1) Click 'Create Event' on the homepage or click 'Contacts' in the top navigation bar. (2) Fill out the contact form at www.veent.io/contacts with your name, email, company name, event type, and details about your event. (3) The Veent Tix team will reach out to discuss next steps. You'll then be able to set up your event listing, ticket tiers, pricing, and use marketing tools through the organizer dashboard."
+    category: "navigation"
+
+  # --- Sharing Events ---
+
+  - question: "How do I share an event?"
+    answer: "To share an event: (1) Go to the event page by finding the event on the Discover page and clicking on it. (2) Look for the 'Share Event' button on the event page. (3) Click it to share the event on social media platforms. You can also copy the event page URL directly from your browser's address bar and send it to friends."
+    category: "navigation"
+
+  # --- Finding Policies ---
+
+  - question: "Where can I find the privacy policy on the website?"
+    answer: "Scroll to the bottom of any page on www.veent.io and look in the footer. Click 'Privacy Policy' — this links to www.veent.io/data-privacy. The page contains the full Data & Privacy Policy in 7 sections covering data collection, usage, sharing, storage, your rights, security measures, and policy updates."
+    category: "navigation"
+
+  - question: "Where can I find the terms and conditions on the website?"
+    answer: "Scroll to the bottom of any page on www.veent.io and look in the footer. Click 'Terms & Conditions' — this links to www.veent.io/terms-condition. The page contains the full Terms and Conditions in 17 sections covering services, account obligations, ticket purchases, refunds, intellectual property, and more."
+    category: "navigation"
+
+  # --- Homepage Navigation ---
+
+  - question: "What can I do on the Veent Tix homepage?"
+    answer: "The homepage at www.veent.io gives you several options: (1) Click 'Book Your Ticket' to go to the Discover page and browse events. (2) Click 'Create Event' if you're an organizer who wants to host an event. (3) Scroll down to see 'Recommended Events' — click any event to view details, or click 'Explore for more.' (4) View features for organizers, partner organizations, and testimonials. (5) Check the FAQ section with expandable answers. (6) See accepted payment methods (Maya, Visa, GCash, Bank Transfer). (7) Use the footer for quick links, contact info, and social media."
+    category: "navigation"
+
+  - question: "What is on the navigation bar?"
+    answer: "The top navigation bar appears on every page and has: (1) The Veent logo on the top left — click it to go back to the homepage at www.veent.io. (2) 'Explore Events' — click to browse all upcoming events on the Discover page (www.veent.io/discover). (3) 'Contacts' — click to go to the contact form for event organizers (www.veent.io/contacts). (4) 'LOGIN' — click to sign in or create an account at v2.veent.io/sign-in."
+    category: "navigation"
+
+  # --- QR Code ---
+
+  - question: "How do I verify a QR code ticket?"
+    answer: "On the event page, scroll to the bottom and look for the 'Verify QR Code' link. Click it to access the QR code verification tool. This lets you scan and verify whether a ticket's QR code is valid for that event."
+    category: "navigation"
+
+  # --- Payment Process ---
+
+  - question: "How do I pay for my tickets?"
+    answer: "After selecting your tickets on an event page and clicking 'Next,' you'll be taken to the checkout process. Choose your payment method from: Maya (digital wallet), Visa (credit/debit card), GCash (mobile wallet), or Bank Transfer (direct bank payment). Follow the prompts to complete payment. Once payment is confirmed, your digital ticket with QR code will be sent to your email and appear under 'My Tickets' in your account dashboard."
+    category: "navigation"
+
+  - question: "What payment methods can I use?"
+    answer: "At checkout, you can pay using: (1) Maya — a digital wallet, (2) Visa — credit or debit card, (3) GCash — mobile wallet, or (4) Bank Transfer — direct bank payment. These options are shown at the bottom of the homepage and during checkout. All payments are processed securely through trusted payment partners."
+    category: "navigation"
+
+  # --- Going Back / General Navigation ---
+
+  - question: "How do I go back to the homepage?"
+    answer: "Click the Veent logo in the top-left corner of the navigation bar on any page. This always takes you back to the homepage at www.veent.io."
+    category: "navigation"
+
+  - question: "Where is the FAQ section on the website?"
+    answer: "The FAQ section is on the homepage at www.veent.io. Scroll down past the Recommended Events, Features, Partners, and Testimonials sections. You'll see 5 frequently asked questions with expandable accordion-style answers. You can also click 'FAQ' in the footer Quick Links section — it scrolls you directly to the FAQ section on the homepage."
+    category: "navigation"
+
+  - question: "How do I find Veent Tix's social media from the website?"
+    answer: "Scroll to the bottom of any page on www.veent.io and look in the footer. You'll find links to Veent Tix's social media accounts: Facebook (facebook.com/veent.io), Instagram (@veent.tix), LinkedIn (linkedin.com/company/veent), and TikTok (@veent_tix)."
+    category: "navigation"
+
+  # ============================================================
+  # TAGALOG / TAGLISH FAQs
+  # Common questions in Tagalog/Filipino (Taglish) — the way
+  # Filipino users naturally ask. UI element names are kept in
+  # English since those are what appear on the website.
+  # ============================================================
+
+  - question: "Ano ang Veent Tix?"
+    answer: "Ang Veent Tix ay isang online ticketing platform na pinapatakbo ng Veent Apps Inc. Dito pwede kang mag-browse ng mga upcoming events tulad ng concerts, festivals, fun runs, at workshops, bumili ng tickets gamit ang secure na payment system, at matanggap ang digital ticket mo via email o sa iyong Veent Tix account. Para sa mga event organizers naman, may tools para gumawa, mag-promote, at magbenta ng tickets."
+    category: "tagalog"
+
+  - question: "Paano bumili ng ticket?"
+    answer: "Sundan mo lang ang mga steps na ito: (1) Pumunta sa www.veent.io at i-click ang 'Explore Events' sa navigation bar sa taas, o i-click ang 'Book Your Ticket' sa homepage — dadalhin ka sa Discover page sa www.veent.io/discover. (2) Hanapin at i-click ang event na gusto mong puntahan. (3) Sa event page, mag-scroll pababa sa 'Book Your Ticket Now' section. (4) Piliin ang ticket type mo (hal. VVIP, VIP, General Admission) at i-set ang quantity gamit ang + at - buttons. Kung may seat selection, i-click ang 'Select Seats.' (5) I-click ang 'Next' para mag-proceed sa checkout. (6) Mag-log in o gumawa ng account kung wala ka pa. (7) Mag-bayad gamit ang Maya, Visa, GCash, o Bank Transfer. (8) Padadalhan ka ng digital ticket na may QR code sa email mo, at makikita mo rin ito sa 'My Tickets' sa account dashboard mo."
+    category: "tagalog"
+
+  - question: "Paano mag-sign up? Paano gumawa ng account?"
+    answer: "Para gumawa ng Veent Tix account: (1) I-click ang 'LOGIN' button sa kanang taas ng navigation bar sa kahit anong page. (2) Sa sign-in page (v2.veent.io/sign-in), i-click ang 'Sign up' link. (3) I-fill up ang full name, email address, at iba pang required details. (4) Tingnan ang email mo para sa verification link at i-confirm ang account mo. Pagka-verified na, pwede ka nang mag-log in, mag-browse ng events, bumili ng tickets, at i-manage ang dashboard mo."
+    category: "tagalog"
+
+  - question: "Paano mag-log in?"
+    answer: "I-click lang ang 'LOGIN' button sa kanang taas ng navigation bar — makikita mo ito sa lahat ng pages ng website. Dadalhin ka sa sign-in page sa v2.veent.io/sign-in. Pwede kang mag-sign in gamit ang 'Continue with Google' o mag-enter ng email at password mo. Pagka-sign in, ma-access mo na ang Dashboard at Wallet mo."
+    category: "tagalog"
+
+  - question: "Saan makikita ang mga events?"
+    answer: "Maraming paraan para mahanap ang mga events: (1) I-click ang 'Explore Events' sa navigation bar sa taas ng kahit anong page — dadalhin ka sa Discover page sa www.veent.io/discover kung saan naka-list lahat ng upcoming events by date. (2) Sa homepage (www.veent.io), mag-scroll pababa sa 'Recommended Events' section para makita ang mga featured events. I-click ang 'Explore for more' para makita lahat. (3) I-click ang kahit anong event card para makita ang full details, ticket options, at pricing."
+    category: "tagalog"
+
+  - question: "Paano mag-bayad? Ano ang payment methods?"
+    answer: "Pagka-select mo ng tickets at na-click mo na ang 'Next,' pupunta ka sa checkout. Pwede kang pumili sa mga sumusunod na payment methods: (1) Maya — digital wallet, (2) Visa — credit o debit card, (3) GCash — mobile wallet, o (4) Bank Transfer — direct bank payment. Lahat ng payments ay secure at processed sa mga trusted payment partners. Pagka-confirm ng payment, padadalhan ka ng digital ticket na may QR code sa email mo."
+    category: "tagalog"
+
+  - question: "May refund ba? Pwede ba mag-refund?"
+    answer: "Ang lahat ng purchases sa Veent Tix ay final at non-refundable. Strict ang No Refund Policy namin — pagka-bili mo na ng ticket, hindi na pwede mag-refund, mag-cancel, o mag-exchange sa kahit anong dahilan, kasama na ang change of schedule, sakit, transportation issues, o hindi ka satisfied sa event. Pero kung ang event mismo ang na-cancel ng organizer, ang organizer ang bahala sa refund ayon sa sarili nilang refund policy. Ang Veent Tix ay hindi responsible sa refund processing maliban kung explicitly stated."
+    category: "tagalog"
+
+  - question: "Paano makita ang tickets ko?"
+    answer: "Para makita ang mga nabili mong tickets: (1) I-click ang 'LOGIN' sa kanang taas ng navigation bar at mag-sign in sa v2.veent.io/sign-in. (2) Pagka-log in, pumunta sa Dashboard mo. (3) I-click ang 'My Tickets' para makita lahat ng tickets mo kasama ang QR codes. Pwede mong i-show ang QR code sa phone mo sa event entrance, o mag-print ng copy. Naka-send din ang tickets sa email mo pagka-purchase."
+    category: "tagalog"
+
+  - question: "Saan ang login button?"
+    answer: "Ang 'LOGIN' button ay nasa kanang taas ng navigation bar. Makikita mo ito sa lahat ng pages ng website — hindi siya nawawala. I-click mo lang at dadalhin ka sa v2.veent.io/sign-in kung saan pwede kang mag-sign in gamit ang Google o email at password, o mag-sign up para sa bagong account."
+    category: "tagalog"
+
+  - question: "Paano pumili ng seat?"
+    answer: "Hindi lahat ng events ay may seat selection — depende ito sa ticket type. Para pumili ng seat: (1) Pumunta sa event page sa pamamagitan ng Discover page (www.veent.io/discover) at i-click ang event. (2) Mag-scroll pababa sa 'Book Your Ticket Now.' (3) Sa mga ticket types na may seat selection (tulad ng VVIP o VIP), may makikita kang 'Select Seats' button. I-click ito para lumabas ang seat map. (4) Piliin ang gusto mong seats sa mga available. (5) I-click ang 'Next' para mag-proceed sa checkout. Sa general admission tickets, walang seat selection — gamitin lang ang + at - buttons para pumili ng quantity."
+    category: "tagalog"
+
+  - question: "Paano i-contact ang support?"
+    answer: "Maraming paraan para mag-contact sa Veent Tix: (1) Mag-email sa support@veenttix.com — isama ang full name, registered email, at ticket order ID mo (kung meron) para mas mabilis ang tulong. (2) I-click ang 'Contacts' sa navigation bar o pumunta sa www.veent.io/contacts para sa contact form (para sa event organizers). (3) Para sa general inquiries, mag-email sa hello@veent.io. Available ang support team Monday to Saturday, 9:00 AM to 6:00 PM (Philippine Time), at nag-re-respond within 24 to 48 hours."
+    category: "tagalog"
+
+  - question: "Pwede ba GCash? Ano ang GCash?"
+    answer: "Oo, tinatanggap ang GCash sa Veent Tix! Ang GCash ay isang mobile wallet — pwede mong gamitin ito para mag-bayad ng tickets sa checkout. Bukod sa GCash, tinatanggap din ang Maya, Visa (credit/debit card), at Bank Transfer. Lahat ng payments ay processed nang secure sa mga trusted payment partners."
+    category: "tagalog"
+
+  - question: "Paano mag-share ng event?"
+    answer: "Para mag-share ng event sa kaibigan o sa social media: (1) Pumunta sa event page sa pamamagitan ng Discover page at i-click ang event. (2) Hanapin ang 'Share Event' button sa event page. (3) I-click ito para i-share ang event sa iba't ibang social media platforms. Pwede mo ring i-copy ang URL ng event page mula sa address bar ng browser mo at i-send sa mga kaibigan mo."
+    category: "tagalog"
+
+  - question: "Safe ba mag-bayad dito?"
+    answer: "Oo, very secure ang payment system ng Veent Tix. Gumagamit kami ng enterprise-grade security na may industry-leading encryption para protektahan ang payment data mo. Kasama sa mga security measures namin ang SSL encryption, firewalls, secure cloud hosting, role-based access controls, at regular system updates at audits. Lahat ng payments ay processed sa mga trusted payment partners tulad ng Maya, Visa, GCash, at Bank Transfer."
+    category: "tagalog"
+
+  - question: "Ano mangyayari pag na-cancel ang event?"
+    answer: "Kung fully na-cancel ang isang event, ang event organizer ang responsible sa pag-handle ng refund requests o alternative solutions, tulad ng event credits o rescheduled access. Kung postponed o rescheduled lang, valid pa rin ang existing ticket mo para sa bagong date o venue — padadalhan ka ng Veent Tix ng email notification kapag na-finalize na ng organizer ang updated details. Tandaan: ang Veent Tix ay ticketing service provider lang at hindi nagko-control ng event decisions o refund timelines."
+    category: "tagalog"
+
+  - question: "Paano bumalik sa homepage?"
+    answer: "I-click lang ang Veent logo sa kaliwang taas ng navigation bar — makikita mo ito sa lahat ng pages ng website. Dadalhin ka nito pabalik sa homepage sa www.veent.io."
+    category: "tagalog"
+
+  - question: "Saan ang privacy policy?"
+    answer: "Para makita ang Privacy Policy, mag-scroll pababa sa pinaka-ilalim ng kahit anong page sa www.veent.io at hanapin sa footer. I-click ang 'Privacy Policy' — dadalhin ka sa www.veent.io/data-privacy. Nandoon ang buong Data & Privacy Policy na may 7 sections tungkol sa data collection, paggamit, sharing, storage, mga karapatan mo, security measures, at policy updates."
+    category: "tagalog"
+
+  - question: "Paano mag-contact sa organizer?"
+    answer: "Para ma-contact ang event organizer, pumunta sa specific event page ng event na pinag-uusapan. Mag-scroll pababa lagpas sa ticket selection area at hanapin ang 'Need Help? Contact Us' section. Dito makikita ang contact information ng organizer, na pwedeng may name, phone number, email address, o social media links. Iba-iba ang contact details ng bawat event organizer."
+    category: "tagalog"
+
+  - question: "Kailangan ba ng account para bumili ng ticket?"
+    answer: "Oo, kailangan mo ng Veent Tix account para makabili ng tickets. Para gumawa ng account, i-click ang 'LOGIN' button sa kanang taas ng navigation bar, tapos i-click ang 'Sign up' sa sign-in page (v2.veent.io/sign-in). I-fill up ang full name, email, at iba pang required info. Pagka-verify ng account mo, pwede ka nang bumili ng tickets, mag-browse ng events, at i-manage ang dashboard mo."
+    category: "tagalog"
+
+  - question: "Ano ang dapat dalhin ko sa event?"
+    answer: "Kailangan mong dalhin ang valid copy ng ticket mo — pwedeng printed o digital (QR code) — at i-present ito sa event entrance. Pwede ring kailanganin ng government-issued photo ID (tulad ng driver's license, passport, o national ID) na naka-match sa pangalan sa ticket. Para makita ang digital ticket mo, mag-log in sa Veent Tix account mo at pumunta sa 'My Tickets' sa Dashboard, o i-check ang email na pinadala nung bumili ka."
+    category: "tagalog"

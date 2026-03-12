@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veent Tix Bot - Admin</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    /* ── Layout ── */
+    .topbar {
+      background: #111;
+      border-bottom: 1px solid #222;
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .topbar h1 {
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topbar h1 span {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .topbar nav {
+      display: flex;
+      gap: 4px;
+    }
+
+    .topbar nav button {
+      background: transparent;
+      border: 1px solid transparent;
+      color: #888;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .topbar nav button:hover { color: #fff; background: #1e1e1e; }
+    .topbar nav button.active { color: #fff; background: #6366f120; border-color: #6366f140; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px;
+    }
+
+    /* ── Tab Panels ── */
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* ── Stats Bar ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .stat-card .label { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+    .stat-card .value { font-size: 28px; font-weight: 700; margin-top: 4px; }
+    .stat-card .value.green { color: #22c55e; }
+    .stat-card .value.blue { color: #6366f1; }
+    .stat-card .value.yellow { color: #eab308; }
+
+    /* ── Table ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .section-header h2 { font-size: 16px; font-weight: 600; }
+
+    .search-box {
+      background: #1e1e1e;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 8px 14px;
+      color: #fff;
+      font-size: 13px;
+      width: 260px;
+      outline: none;
+    }
+
+    .search-box:focus { border-color: #6366f1; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    thead th {
+      text-align: left;
+      padding: 10px 12px;
+      color: #666;
+      font-weight: 500;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #222;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #1a1a1a;
+      transition: background 0.15s;
+    }
+
+    tbody tr:hover { background: #161616; }
+
+    tbody td {
+      padding: 12px;
+      vertical-align: top;
+      max-width: 400px;
+    }
+
+    .category-tag {
+      background: #6366f115;
+      color: #a5b4fc;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: inline-block;
+    }
+
+    .truncate {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 350px;
+      display: block;
+    }
+
+    .actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn {
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      cursor: pointer;
+      border: 1px solid;
+      transition: all 0.2s;
+    }
+
+    .btn-primary { background: #6366f1; border-color: #6366f1; color: #fff; }
+    .btn-primary:hover { background: #5558e6; }
+    .btn-outline { background: transparent; border-color: #333; color: #aaa; }
+    .btn-outline:hover { border-color: #6366f1; color: #6366f1; }
+    .btn-danger { background: transparent; border-color: #333; color: #aaa; }
+    .btn-danger:hover { border-color: #ef4444; color: #ef4444; }
+    .btn-success { background: #22c55e20; border-color: #22c55e40; color: #22c55e; }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 16px;
+      width: 560px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 28px;
+    }
+
+    .modal h3 { font-size: 18px; margin-bottom: 20px; }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: #1e1e1e;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .form-group textarea { min-height: 100px; resize: vertical; }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: #6366f1; }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    /* ── Test Panel ── */
+    .test-area {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .test-input-area {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .test-input-area h3 { font-size: 15px; margin-bottom: 16px; }
+
+    .test-input-area textarea {
+      width: 100%;
+      background: #1e1e1e;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 12px;
+      color: #fff;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      min-height: 80px;
+      resize: vertical;
+      margin-bottom: 12px;
+    }
+
+    .test-input-area textarea:focus { border-color: #6366f1; }
+
+    .test-result {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .test-result h3 { font-size: 15px; margin-bottom: 16px; }
+
+    .result-field {
+      margin-bottom: 14px;
+    }
+
+    .result-field .label {
+      font-size: 11px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .result-field .value {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .tier-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .tier-exact { background: #22c55e20; color: #22c55e; }
+    .tier-rag { background: #6366f120; color: #6366f1; }
+    .tier-decline { background: #ef444420; color: #ef4444; }
+
+    .confidence-bar {
+      width: 100%;
+      height: 6px;
+      background: #222;
+      border-radius: 3px;
+      margin-top: 6px;
+      overflow: hidden;
+    }
+
+    .confidence-bar .fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+
+    /* ── Bulk Import ── */
+    .import-area {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 24px;
+    }
+
+    .import-area h3 { font-size: 15px; margin-bottom: 8px; }
+    .import-area p { font-size: 13px; color: #666; margin-bottom: 16px; }
+
+    .import-area textarea {
+      width: 100%;
+      background: #1e1e1e;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 12px;
+      color: #fff;
+      font-size: 13px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      outline: none;
+      min-height: 200px;
+      resize: vertical;
+      margin-bottom: 12px;
+    }
+
+    .import-area textarea:focus { border-color: #6366f1; }
+
+    .import-status {
+      font-size: 13px;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 8px;
+      display: none;
+    }
+
+    .import-status.success { display: block; background: #22c55e15; color: #22c55e; border: 1px solid #22c55e30; }
+    .import-status.error { display: block; background: #ef444415; color: #ef4444; border: 1px solid #ef444430; }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #555;
+    }
+
+    .empty-state p { font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <h1><span>V</span> Veent Tix Bot Admin</h1>
+    <nav>
+      <button class="active" onclick="switchTab('faqs')">FAQs</button>
+      <button onclick="switchTab('test')">Test Query</button>
+      <button onclick="switchTab('import')">Bulk Import</button>
+      <button onclick="window.open('/', '_blank')">Open Chat</button>
+    </nav>
+  </div>
+
+  <div class="container">
+    <!-- ── Stats ── -->
+    <div class="stats">
+      <div class="stat-card"><div class="label">Total FAQs</div><div class="value blue" id="statTotal">-</div></div>
+      <div class="stat-card"><div class="label">Categories</div><div class="value" id="statCategories">-</div></div>
+      <div class="stat-card"><div class="label">Database</div><div class="value green" id="statDb">-</div></div>
+      <div class="stat-card"><div class="label">Embeddings</div><div class="value green" id="statEmb">-</div></div>
+    </div>
+
+    <!-- ── FAQs Panel ── -->
+    <div class="panel active" id="panel-faqs">
+      <div class="section-header">
+        <h2>FAQ Entries</h2>
+        <div style="display:flex;gap:10px;">
+          <input class="search-box" type="text" placeholder="Search FAQs..." oninput="filterFaqs(this.value)" />
+          <button class="btn btn-primary" onclick="openAddModal()">+ Add FAQ</button>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:30%">Question</th>
+            <th style="width:40%">Answer</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="faqTable"></tbody>
+      </table>
+    </div>
+
+    <!-- ── Test Panel ── -->
+    <div class="panel" id="panel-test">
+      <div class="test-area">
+        <div class="test-input-area">
+          <h3>Test a Query</h3>
+          <p style="font-size:13px;color:#666;margin-bottom:12px;">Type a question to see how the bot responds — check the tier, confidence, and answer to verify accuracy.</p>
+          <textarea id="testQuery" placeholder="Type a question to test..."></textarea>
+          <button class="btn btn-primary" onclick="runTest()" id="testBtn">Run Query</button>
+        </div>
+        <div class="test-result" id="testResult">
+          <h3>Result</h3>
+          <div class="empty-state" id="testEmpty">
+            <p>Run a query to see results here.</p>
+          </div>
+          <div id="testOutput" style="display:none;">
+            <div class="result-field">
+              <div class="label">Tier</div>
+              <div class="value"><span class="tier-badge" id="resTier"></span></div>
+            </div>
+            <div class="result-field">
+              <div class="label">Confidence</div>
+              <div class="value" id="resConf"></div>
+              <div class="confidence-bar"><div class="fill" id="resConfBar"></div></div>
+            </div>
+            <div class="result-field">
+              <div class="label">Cached</div>
+              <div class="value" id="resCached"></div>
+            </div>
+            <div class="result-field">
+              <div class="label">Response Time</div>
+              <div class="value" id="resTime"></div>
+            </div>
+            <div class="result-field">
+              <div class="label">Answer</div>
+              <div class="value" id="resAnswer" style="background:#1a1a1a;padding:12px;border-radius:8px;margin-top:4px;"></div>
+            </div>
+            <div class="result-field" id="resSuggestionsWrap" style="display:none;">
+              <div class="label">Suggested Questions</div>
+              <div class="value" id="resSuggestions"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Import Panel ── -->
+    <div class="panel" id="panel-import">
+      <div class="import-area">
+        <h3>Add Individual FAQ</h3>
+        <p>Fill in the fields below and click "Add" to add a single FAQ entry. It will be embedded and available immediately.</p>
+        <div class="form-group">
+          <label>Question</label>
+          <input type="text" id="singleQuestion" placeholder="e.g. What are your business hours?" />
+        </div>
+        <div class="form-group">
+          <label>Answer</label>
+          <textarea id="singleAnswer" placeholder="e.g. We are open Monday to Saturday, 9 AM to 6 PM PHT." style="min-height:80px;"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <input type="text" id="singleCategory" placeholder="e.g. support, payments, general" />
+        </div>
+        <button class="btn btn-primary" onclick="addSingleFaq()">Add FAQ</button>
+        <div class="import-status" id="singleStatus"></div>
+      </div>
+
+      <div class="import-area">
+        <h3>Bulk Import (JSON)</h3>
+        <p>Paste a JSON array of FAQ entries. Each entry needs <code>question</code>, <code>answer</code>, and optionally <code>category</code>.</p>
+        <textarea id="importData" placeholder='[
+  {
+    "question": "What is your refund policy?",
+    "answer": "All sales are final and non-refundable.",
+    "category": "refund"
+  },
+  {
+    "question": "How do I contact support?",
+    "answer": "Email us at support@veenttix.com.",
+    "category": "support"
+  }
+]'></textarea>
+        <button class="btn btn-primary" onclick="bulkImport()">Import FAQs</button>
+        <div class="import-status" id="importStatus"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Edit Modal ── -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <h3 id="modalTitle">Add FAQ</h3>
+      <input type="hidden" id="editId" />
+      <div class="form-group">
+        <label>Question</label>
+        <input type="text" id="editQuestion" placeholder="Enter the question..." />
+      </div>
+      <div class="form-group">
+        <label>Answer</label>
+        <textarea id="editAnswer" placeholder="Enter the answer..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <input type="text" id="editCategory" placeholder="e.g. general, support, payments" />
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveFaq()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let allFaqs = [];
+
+    // ── Tab Switching ──
+    function switchTab(tab) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.topbar nav button').forEach(b => b.classList.remove('active'));
+      document.getElementById(`panel-${tab}`).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    // ── Load Data ──
+    async function loadFaqs() {
+      const res = await fetch('/api/admin/faqs');
+      allFaqs = await res.json();
+      renderFaqs(allFaqs);
+      document.getElementById('statTotal').textContent = allFaqs.length;
+      const cats = new Set(allFaqs.map(f => f.category).filter(Boolean));
+      document.getElementById('statCategories').textContent = cats.size;
+    }
+
+    async function loadHealth() {
+      try {
+        const res = await fetch('/api/health');
+        const data = await res.json();
+        document.getElementById('statDb').textContent = data.database ? 'OK' : 'DOWN';
+        document.getElementById('statDb').className = 'value ' + (data.database ? 'green' : '');
+        document.getElementById('statEmb').textContent = data.embedding ? 'OK' : 'DOWN';
+        document.getElementById('statEmb').className = 'value ' + (data.embedding ? 'green' : '');
+      } catch {
+        document.getElementById('statDb').textContent = 'ERR';
+        document.getElementById('statEmb').textContent = 'ERR';
+      }
+    }
+
+    function renderFaqs(faqs) {
+      const tbody = document.getElementById('faqTable');
+      if (faqs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" class="empty-state"><p>No FAQs found.</p></td></tr>';
+        return;
+      }
+      tbody.innerHTML = faqs.map(f => `
+        <tr>
+          <td><span class="truncate" title="${esc(f.question)}">${esc(f.question)}</span></td>
+          <td><span class="truncate" title="${esc(f.answer)}">${esc(f.answer)}</span></td>
+          <td>${f.category ? `<span class="category-tag">${esc(f.category)}</span>` : '-'}</td>
+          <td>
+            <div class="actions">
+              <button class="btn btn-outline" onclick='openEditModal(${JSON.stringify(f).replace(/'/g, "&#39;")})'>Edit</button>
+              <button class="btn btn-danger" onclick="deleteFaq('${f.id}')">Delete</button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function esc(s) {
+      const d = document.createElement('div');
+      d.textContent = s || '';
+      return d.innerHTML;
+    }
+
+    function filterFaqs(query) {
+      const q = query.toLowerCase();
+      const filtered = allFaqs.filter(f =>
+        f.question.toLowerCase().includes(q) ||
+        f.answer.toLowerCase().includes(q) ||
+        (f.category || '').toLowerCase().includes(q)
+      );
+      renderFaqs(filtered);
+    }
+
+    // ── Modal ──
+    function openAddModal() {
+      document.getElementById('modalTitle').textContent = 'Add FAQ';
+      document.getElementById('editId').value = '';
+      document.getElementById('editQuestion').value = '';
+      document.getElementById('editAnswer').value = '';
+      document.getElementById('editCategory').value = '';
+      document.getElementById('modal').classList.add('open');
+    }
+
+    function openEditModal(faq) {
+      document.getElementById('modalTitle').textContent = 'Edit FAQ';
+      document.getElementById('editId').value = faq.id;
+      document.getElementById('editQuestion').value = faq.question;
+      document.getElementById('editAnswer').value = faq.answer;
+      document.getElementById('editCategory').value = faq.category || '';
+      document.getElementById('modal').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('open');
+    }
+
+    async function saveFaq() {
+      const id = document.getElementById('editId').value || undefined;
+      const question = document.getElementById('editQuestion').value.trim();
+      const answer = document.getElementById('editAnswer').value.trim();
+      const category = document.getElementById('editCategory').value.trim() || undefined;
+
+      if (!question || !answer) { alert('Question and answer are required.'); return; }
+
+      const res = await fetch('/api/admin/faqs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, question, answer, category }),
+      });
+
+      if (res.ok) {
+        closeModal();
+        await loadFaqs();
+      } else {
+        const err = await res.json();
+        alert('Error: ' + (err.error || 'Unknown error'));
+      }
+    }
+
+    async function deleteFaq(id) {
+      if (!confirm('Are you sure you want to delete this FAQ?')) return;
+      const res = await fetch(`/api/admin/faqs/${id}`, { method: 'DELETE' });
+      if (res.ok) await loadFaqs();
+      else alert('Error deleting FAQ');
+    }
+
+    // ── Test Query ──
+    async function runTest() {
+      const query = document.getElementById('testQuery').value.trim();
+      if (!query) return;
+
+      document.getElementById('testBtn').disabled = true;
+      document.getElementById('testBtn').textContent = 'Running...';
+
+      try {
+        const start = Date.now();
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: query }),
+        });
+        const data = await res.json();
+        const duration = Date.now() - start;
+
+        document.getElementById('testEmpty').style.display = 'none';
+        document.getElementById('testOutput').style.display = 'block';
+
+        const tierEl = document.getElementById('resTier');
+        tierEl.textContent = data.tier;
+        tierEl.className = `tier-badge tier-${data.tier}`;
+
+        const conf = data.confidence || 0;
+        document.getElementById('resConf').textContent = (conf * 100).toFixed(1) + '%';
+        const bar = document.getElementById('resConfBar');
+        bar.style.width = (conf * 100) + '%';
+        bar.style.background = conf >= 0.78 ? '#22c55e' : conf >= 0.65 ? '#6366f1' : '#ef4444';
+
+        document.getElementById('resCached').textContent = data.cached ? 'Yes' : 'No';
+        document.getElementById('resTime').textContent = duration + 'ms';
+        document.getElementById('resAnswer').textContent = data.answer;
+
+        const sugWrap = document.getElementById('resSuggestionsWrap');
+        if (data.suggestedQuestions && data.suggestedQuestions.length > 0) {
+          sugWrap.style.display = 'block';
+          document.getElementById('resSuggestions').innerHTML = data.suggestedQuestions
+            .map(q => `<span style="display:block;padding:4px 0;color:#a5b4fc;cursor:pointer;" onclick="document.getElementById('testQuery').value='${q}'">${q}</span>`)
+            .join('');
+        } else {
+          sugWrap.style.display = 'none';
+        }
+      } catch (err) {
+        alert('Error: ' + err.message);
+      }
+
+      document.getElementById('testBtn').disabled = false;
+      document.getElementById('testBtn').textContent = 'Run Query';
+    }
+
+    document.getElementById('testQuery').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); runTest(); }
+    });
+
+    // ── Single FAQ Add ──
+    async function addSingleFaq() {
+      const question = document.getElementById('singleQuestion').value.trim();
+      const answer = document.getElementById('singleAnswer').value.trim();
+      const category = document.getElementById('singleCategory').value.trim() || undefined;
+      const status = document.getElementById('singleStatus');
+
+      if (!question || !answer) { alert('Question and answer are required.'); return; }
+
+      try {
+        const res = await fetch('/api/admin/faqs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question, answer, category }),
+        });
+
+        if (res.ok) {
+          status.className = 'import-status success';
+          status.textContent = 'FAQ added successfully! It is now embedded and queryable.';
+          document.getElementById('singleQuestion').value = '';
+          document.getElementById('singleAnswer').value = '';
+          document.getElementById('singleCategory').value = '';
+          await loadFaqs();
+        } else {
+          const err = await res.json();
+          status.className = 'import-status error';
+          status.textContent = 'Error: ' + (err.error || 'Unknown error');
+        }
+      } catch (err) {
+        status.className = 'import-status error';
+        status.textContent = 'Error: ' + err.message;
+      }
+    }
+
+    // ── Bulk Import ──
+    async function bulkImport() {
+      const raw = document.getElementById('importData').value.trim();
+      const status = document.getElementById('importStatus');
+
+      if (!raw) { alert('Paste JSON data first.'); return; }
+
+      let entries;
+      try {
+        entries = JSON.parse(raw);
+        if (!Array.isArray(entries)) throw new Error('Must be an array');
+      } catch (e) {
+        status.className = 'import-status error';
+        status.textContent = 'Invalid JSON: ' + e.message;
+        return;
+      }
+
+      status.className = 'import-status success';
+      status.textContent = `Importing ${entries.length} FAQs...`;
+
+      let success = 0;
+      let failed = 0;
+
+      for (const entry of entries) {
+        try {
+          const res = await fetch('/api/admin/faqs', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(entry),
+          });
+          if (res.ok) success++;
+          else failed++;
+        } catch {
+          failed++;
+        }
+      }
+
+      status.className = failed > 0 ? 'import-status error' : 'import-status success';
+      status.textContent = `Done! ${success} imported, ${failed} failed.`;
+      await loadFaqs();
+    }
+
+    // ── Init ──
+    loadFaqs();
+    loadHealth();
+  </script>
+</body>
+</html>

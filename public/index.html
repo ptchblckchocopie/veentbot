@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veent Tix - Chat Support</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Chat Container ── */
+    .chat-container {
+      width: 420px;
+      height: 680px;
+      background: #111;
+      border-radius: 20px;
+      border: 1px solid #222;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    /* ── Header ── */
+    .chat-header {
+      padding: 20px 24px;
+      background: #161616;
+      border-bottom: 1px solid #222;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chat-header .avatar {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .chat-header .info h3 {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .chat-header .info p {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+
+    .chat-header .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    /* ── Messages Area ── */
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      scroll-behavior: smooth;
+    }
+
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-track { background: transparent; }
+    .chat-messages::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+
+    /* ── Message Bubbles ── */
+    .message {
+      display: flex;
+      flex-direction: column;
+      max-width: 85%;
+      animation: fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message.user {
+      align-self: flex-end;
+    }
+
+    .message.assistant {
+      align-self: flex-start;
+    }
+
+    .message .bubble {
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+
+    .message.user .bubble {
+      background: #6366f1;
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message.assistant .bubble {
+      background: #1e1e1e;
+      color: #e5e7eb;
+      border: 1px solid #2a2a2a;
+      border-bottom-left-radius: 4px;
+    }
+
+    /* ── Markdown inside bubbles ── */
+    .bubble p { margin: 0 0 8px 0; }
+    .bubble p:last-child { margin-bottom: 0; }
+    .bubble ul, .bubble ol { margin: 4px 0 8px 0; padding-left: 20px; }
+    .bubble li { margin: 2px 0; }
+    .bubble strong { color: #fff; font-weight: 600; }
+    .bubble a { color: #a5b4fc; text-decoration: underline; }
+    .bubble a:hover { color: #c7d2fe; }
+
+    .message .meta {
+      font-size: 11px;
+      color: #555;
+      margin-top: 4px;
+      padding: 0 4px;
+    }
+
+    .message.user .meta { text-align: right; }
+
+    /* ── Debug Info ── */
+    .debug-info {
+      font-size: 11px;
+      color: #6366f1;
+      background: #6366f110;
+      border: 1px solid #6366f130;
+      border-radius: 8px;
+      padding: 6px 10px;
+      margin-top: 6px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    /* ── Typing Indicator ── */
+    .typing {
+      display: flex;
+      gap: 4px;
+      padding: 12px 16px;
+      background: #1e1e1e;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+      width: fit-content;
+    }
+
+    .typing span {
+      width: 7px;
+      height: 7px;
+      background: #555;
+      border-radius: 50%;
+      animation: bounce 1.4s infinite ease-in-out;
+    }
+
+    .typing span:nth-child(1) { animation-delay: 0s; }
+    .typing span:nth-child(2) { animation-delay: 0.2s; }
+    .typing span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+
+    /* ── Suggested Questions ── */
+    .suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .suggestions button {
+      background: #1a1a2e;
+      border: 1px solid #6366f140;
+      color: #a5b4fc;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .suggestions button:hover {
+      background: #6366f120;
+      border-color: #6366f180;
+      color: #c7d2fe;
+    }
+
+    /* ── Welcome Screen ── */
+    .welcome {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      padding: 40px 30px;
+      text-align: center;
+      gap: 16px;
+    }
+
+    .welcome .icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .welcome h2 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .welcome p {
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    .welcome .quick-questions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .welcome .quick-questions button {
+      background: #161616;
+      border: 1px solid #2a2a2a;
+      color: #d1d5db;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+    }
+
+    .welcome .quick-questions button:hover {
+      background: #1e1e1e;
+      border-color: #6366f180;
+      color: #fff;
+    }
+
+    /* ── Input Area ── */
+    .chat-input {
+      padding: 16px 20px;
+      background: #161616;
+      border-top: 1px solid #222;
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+
+    .chat-input input {
+      flex: 1;
+      background: #1e1e1e;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .chat-input input:focus {
+      border-color: #6366f1;
+    }
+
+    .chat-input input::placeholder {
+      color: #555;
+    }
+
+    .chat-input button {
+      width: 44px;
+      height: 44px;
+      background: #6366f1;
+      border: none;
+      border-radius: 12px;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .chat-input button:hover {
+      background: #5558e6;
+    }
+
+    .chat-input button:disabled {
+      background: #333;
+      cursor: not-allowed;
+    }
+
+    .chat-input button svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ── Feedback ── */
+    .feedback {
+      display: flex;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .feedback button {
+      background: transparent;
+      border: 1px solid #333;
+      color: #666;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .feedback button:hover {
+      border-color: #6366f1;
+      color: #6366f1;
+    }
+
+    .feedback button.active-positive {
+      background: #22c55e20;
+      border-color: #22c55e;
+      color: #22c55e;
+    }
+
+    .feedback button.active-negative {
+      background: #ef444420;
+      border-color: #ef4444;
+      color: #ef4444;
+    }
+
+    /* ── Debug Toggle ── */
+    .debug-toggle {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: #1e1e1e;
+      border: 1px solid #333;
+      color: #666;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .debug-toggle:hover { border-color: #6366f1; color: #6366f1; }
+    .debug-toggle.active { border-color: #6366f1; color: #6366f1; background: #6366f110; }
+
+    .wrapper { position: relative; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <button class="debug-toggle" id="debugToggle">DEBUG OFF</button>
+    <div class="chat-container">
+      <div class="chat-header">
+        <div class="avatar">VB</div>
+        <div class="info">
+          <h3>VeentBot</h3>
+          <p><span class="status-dot"></span>Always online (I never sleep)</p>
+        </div>
+      </div>
+
+      <div class="chat-messages" id="messages">
+        <div class="welcome" id="welcome">
+          <div class="icon">VB</div>
+          <h2>Hey, I'm VeentBot!</h2>
+          <p>Your personal ticketing sidekick. I know everything about Veent Tix — events, tickets, payments, you name it. I'd wave, but... no hands.</p>
+          <div class="quick-questions">
+            <button onclick="sendMessage('What is Veent Tix?')">What is Veent Tix?</button>
+            <button onclick="sendMessage('How do I buy tickets?')">How do I buy tickets?</button>
+            <button onclick="sendMessage('What events are coming up?')">What events are coming up?</button>
+            <button onclick="sendMessage('Can I get a refund?')">Can I get a refund?</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-input">
+        <input type="text" id="input" placeholder="Type your question..." autocomplete="off" />
+        <button id="sendBtn" onclick="handleSend()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js"></script>
+  <script>
+    // Configure marked for chat-friendly output
+    marked.use({
+      breaks: true,       // Convert \n to <br>
+      gfm: true,          // GitHub-flavored markdown
+    });
+
+    function renderMarkdown(text) {
+      // Sanitize HTML tags from LLM output before parsing markdown
+      const escaped = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      return marked.parse(escaped);
+    }
+
+    const API_URL = '/api/chat/stream';
+    let sessionId = localStorage.getItem('veent_session') || null;
+    let debugMode = false;
+    let isLoading = false;
+
+    const messagesEl = document.getElementById('messages');
+    const inputEl = document.getElementById('input');
+    const sendBtn = document.getElementById('sendBtn');
+    const welcomeEl = document.getElementById('welcome');
+    const debugToggle = document.getElementById('debugToggle');
+
+    // Auto-greet on first visit (no existing session)
+    if (!sessionId) {
+      setTimeout(() => {
+        if (welcomeEl) welcomeEl.remove();
+        addMessage('assistant', "Hey hey! I'm VeentBot — your friendly neighborhood ticketing assistant. I basically live inside Veent Tix so you don't have to figure it out alone. Ask me anything!", null, [
+          'What is Veent Tix?',
+          'How do I buy tickets?',
+          'What events are coming up?',
+        ]);
+      }, 600);
+    }
+
+    // Enter key handler
+    inputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        handleSend();
+      }
+    });
+
+    // Debug toggle
+    debugToggle.addEventListener('click', () => {
+      debugMode = !debugMode;
+      debugToggle.textContent = debugMode ? 'DEBUG ON' : 'DEBUG OFF';
+      debugToggle.classList.toggle('active', debugMode);
+      // Show/hide existing debug info
+      document.querySelectorAll('.debug-info').forEach(el => {
+        el.style.display = debugMode ? 'block' : 'none';
+      });
+    });
+
+    function handleSend() {
+      const text = inputEl.value.trim();
+      if (!text || isLoading) return;
+      inputEl.value = '';
+      sendMessage(text);
+    }
+
+    async function sendMessage(text) {
+      if (isLoading) return;
+
+      // Hide welcome screen
+      if (welcomeEl) welcomeEl.remove();
+
+      // Add user message
+      addMessage('user', text);
+
+      // Show typing indicator
+      const typingEl = showTyping();
+
+      isLoading = true;
+      sendBtn.disabled = true;
+
+      try {
+        const start = Date.now();
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text, sessionId }),
+        });
+
+        // Remove typing indicator once stream starts
+        typingEl.remove();
+
+        // Create the assistant message bubble for streaming
+        const wrapper = document.createElement('div');
+        wrapper.className = 'message assistant';
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.textContent = '';
+        wrapper.appendChild(bubble);
+        messagesEl.appendChild(wrapper);
+
+        // Read the SSE stream
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+        let fullText = '';
+        let meta = null;
+        let renderTimer = null;
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          buffer = lines.pop() || '';
+
+          for (const line of lines) {
+            if (!line.startsWith('data: ')) continue;
+            const payload = line.slice(6);
+            if (payload === '[DONE]') continue;
+
+            try {
+              const event = JSON.parse(payload);
+              if (event.type === 'chunk') {
+                fullText += event.text;
+                // Debounce markdown rendering during streaming (every 80ms)
+                if (!renderTimer) {
+                  renderTimer = setTimeout(() => {
+                    bubble.innerHTML = renderMarkdown(fullText);
+                    messagesEl.scrollTop = messagesEl.scrollHeight;
+                    renderTimer = null;
+                  }, 80);
+                }
+              } else if (event.type === 'meta') {
+                meta = event;
+              } else if (event.type === 'error') {
+                fullText = 'Sorry, something went wrong. Please try again.';
+                bubble.innerHTML = renderMarkdown(fullText);
+              }
+            } catch { /* skip malformed */ }
+          }
+        }
+
+        // Final render with complete markdown
+        clearTimeout(renderTimer);
+        bubble.innerHTML = renderMarkdown(fullText);
+
+        const duration = Date.now() - start;
+
+        // Save session
+        if (meta?.sessionId) {
+          sessionId = meta.sessionId;
+          localStorage.setItem('veent_session', sessionId);
+        }
+
+        // Add debug info
+        if (debugMode && meta) {
+          const debug = document.createElement('div');
+          debug.className = 'debug-info';
+          debug.textContent = `tier: ${meta.tier} | confidence: ${meta.confidence?.toFixed(3)} | cached: ${meta.cached} | ${duration}ms`;
+          wrapper.appendChild(debug);
+        }
+
+        // Add suggested questions
+        if (meta?.suggestedQuestions?.length > 0) {
+          const sugDiv = document.createElement('div');
+          sugDiv.className = 'suggestions';
+          meta.suggestedQuestions.forEach(q => {
+            const btn = document.createElement('button');
+            btn.textContent = q;
+            btn.onclick = () => sendMessage(q);
+            sugDiv.appendChild(btn);
+          });
+          wrapper.appendChild(sugDiv);
+        }
+
+        // Add feedback buttons
+        const fb = document.createElement('div');
+        fb.className = 'feedback';
+        const thumbUp = document.createElement('button');
+        thumbUp.innerHTML = '&#x1F44D;';
+        thumbUp.title = 'Helpful';
+        const thumbDown = document.createElement('button');
+        thumbDown.innerHTML = '&#x1F44E;';
+        thumbDown.title = 'Not helpful';
+        thumbUp.onclick = () => { thumbUp.className = 'active-positive'; thumbDown.style.display = 'none'; };
+        thumbDown.onclick = () => { thumbDown.className = 'active-negative'; thumbUp.style.display = 'none'; };
+        fb.appendChild(thumbUp);
+        fb.appendChild(thumbDown);
+        wrapper.appendChild(fb);
+
+        // Timestamp
+        const metaEl = document.createElement('div');
+        metaEl.className = 'meta';
+        metaEl.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        wrapper.appendChild(metaEl);
+
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+
+      } catch (err) {
+        typingEl.remove();
+        addMessage('assistant', 'Sorry, something went wrong. Please try again.');
+        console.error(err);
+      }
+
+      isLoading = false;
+      sendBtn.disabled = false;
+      inputEl.focus();
+    }
+
+    function addMessage(role, text, debugInfo = null, suggestions = []) {
+      const wrapper = document.createElement('div');
+      wrapper.className = `message ${role}`;
+
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+      if (role === 'assistant') {
+        bubble.innerHTML = renderMarkdown(text);
+      } else {
+        bubble.textContent = text;
+      }
+      wrapper.appendChild(bubble);
+
+      // Debug info
+      if (debugInfo) {
+        const debug = document.createElement('div');
+        debug.className = 'debug-info';
+        debug.style.display = debugMode ? 'block' : 'none';
+        debug.textContent = `tier: ${debugInfo.tier} | confidence: ${debugInfo.confidence?.toFixed(3)} | cached: ${debugInfo.cached} | ${debugInfo.duration}ms`;
+        wrapper.appendChild(debug);
+      }
+
+      // Suggested questions
+      if (suggestions && suggestions.length > 0) {
+        const sugDiv = document.createElement('div');
+        sugDiv.className = 'suggestions';
+        suggestions.forEach(q => {
+          const btn = document.createElement('button');
+          btn.textContent = q;
+          btn.onclick = () => sendMessage(q);
+          sugDiv.appendChild(btn);
+        });
+        wrapper.appendChild(sugDiv);
+      }
+
+      // Feedback (for assistant messages only)
+      if (role === 'assistant') {
+        const fb = document.createElement('div');
+        fb.className = 'feedback';
+
+        const thumbUp = document.createElement('button');
+        thumbUp.innerHTML = '&#x1F44D;';
+        thumbUp.title = 'Helpful';
+        thumbUp.onclick = () => { thumbUp.className = 'active-positive'; thumbDown.style.display = 'none'; };
+
+        const thumbDown = document.createElement('button');
+        thumbDown.innerHTML = '&#x1F44E;';
+        thumbDown.title = 'Not helpful';
+        thumbDown.onclick = () => { thumbDown.className = 'active-negative'; thumbUp.style.display = 'none'; };
+
+        fb.appendChild(thumbUp);
+        fb.appendChild(thumbDown);
+        wrapper.appendChild(fb);
+      }
+
+      // Timestamp
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      wrapper.appendChild(meta);
+
+      messagesEl.appendChild(wrapper);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function showTyping() {
+      const typing = document.createElement('div');
+      typing.className = 'typing';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      messagesEl.appendChild(typing);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      return typing;
+    }
+  </script>
+</body>
+</html>

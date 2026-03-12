@@ -1,0 +1,43 @@
+# Veent Bot FAQ Data
+# Copy this to faqs.yaml and fill in your company's actual information.
+
+faqs:
+  - question: "What does your company do?"
+    answer: "We provide digital solutions including web development, app development, and cloud hosting services."
+    category: "general"
+
+  - question: "What are your business hours?"
+    answer: "We are open Monday through Friday, 9:00 AM to 6:00 PM PHT. We are closed on weekends and Philippine holidays."
+    category: "general"
+
+  - question: "How can I contact support?"
+    answer: "You can reach our support team via email at support@example.com or through the chat widget on our website during business hours."
+    category: "support"
+
+  - question: "Where are you located?"
+    answer: "Our main office is located in Cebu City, Philippines."
+    category: "general"
+
+  - question: "What technologies do you use?"
+    answer: "We primarily work with SvelteKit for frontend development, Payload CMS for content management, PostgreSQL for databases, and Digital Ocean for cloud hosting."
+    category: "technical"
+
+  - question: "Do you offer free consultations?"
+    answer: "Yes, we offer a free 30-minute consultation for new clients to discuss project requirements and provide an initial assessment."
+    category: "services"
+
+  - question: "What is your refund policy?"
+    answer: "We offer a full refund within 14 days of project kickoff if you are not satisfied with the initial deliverables. After 14 days, refunds are prorated based on work completed."
+    category: "policies"
+
+  - question: "How long does a typical project take?"
+    answer: "Project timelines vary depending on scope. A simple website typically takes 2-4 weeks, while more complex applications can take 2-3 months. We provide detailed timelines during the consultation phase."
+    category: "services"
+
+  - question: "Do you offer maintenance and support after launch?"
+    answer: "Yes, we offer ongoing maintenance packages that include bug fixes, security updates, and minor feature additions. Plans start at a monthly retainer basis."
+    category: "services"
+
+  - question: "What payment methods do you accept?"
+    answer: "We accept bank transfers, GCash, Maya, PayPal, and credit/debit cards. For larger projects, we offer milestone-based payment schedules."
+    category: "billing"

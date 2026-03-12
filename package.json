@@ -1,0 +1,38 @@
+{
+  "name": "veent-bot",
+  "version": "1.0.0",
+  "description": "Ever-learning FAQ chatbot module",
+  "main": "dist/core/index.js",
+  "types": "dist/core/index.d.ts",
+  "scripts": {
+    "migrate": "tsx scripts/migrate.ts",
+    "seed": "tsx scripts/seed-faqs.ts",
+    "ingest": "tsx scripts/ingest-content.ts",
+    "ingest:docs": "tsx scripts/ingest-docs.ts",
+    "test:query": "tsx scripts/test-query.ts",
+    "calibrate": "tsx scripts/calibrate-thresholds.ts",
+    "eval": "tsx scripts/run-eval.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "tsc",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "chat": "tsx scripts/chat.ts",
+    "dev": "tsx scripts/serve.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@types/node": "^25.4.0",
+    "@types/pg": "^8.18.0",
+    "@vercel/node": "^5.6.15",
+    "dotenv": "^17.3.1",
+    "pg": "^8.20.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18",
+    "yaml": "^2.8.2"
+  }
+}
