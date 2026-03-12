@@ -13,8 +13,10 @@ export async function getBot(): Promise<FAQBot> {
         baseUrl: process.env.OLLAMA_BASE_URL,
       },
       llm: {
-        provider: 'gemini',
+        provider: (process.env.LLM_PROVIDER as 'gemini' | 'ollama') || 'gemini',
         apiKey: process.env.GEMINI_API_KEY,
+        model: process.env.LLM_MODEL,
+        baseUrl: process.env.OLLAMA_BASE_URL,
       },
     });
   }

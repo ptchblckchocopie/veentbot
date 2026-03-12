@@ -1,6 +1,9 @@
 import { describe, it, expect, afterAll } from 'vitest';
 import { getTestBot, cleanup } from './setup.js';
 
+// Ollama LLM on CPU needs more time than cloud APIs
+const LLM_TIMEOUT = 120_000;
+
 afterAll(async () => { await cleanup(); });
 
 describe('Query Pipeline (integration)', () => {
@@ -12,7 +15,7 @@ describe('Query Pipeline (integration)', () => {
     expect(res.confidence).toBeGreaterThan(0.78);
     expect(res.answer.toLowerCase()).toContain('gcash');
     expect(res.cached).toBe(false);
-  });
+  }, LLM_TIMEOUT);
 
   it('returns rag tier for moderate match', async () => {
     const bot = await getTestBot();
@@ -22,7 +25,7 @@ describe('Query Pipeline (integration)', () => {
     expect(['rag', 'exact']).toContain(res.tier);
     expect(res.confidence).toBeGreaterThan(0.52);
     expect(res.answer.toLowerCase()).toContain('refund');
-  });
+  }, LLM_TIMEOUT);
 
   it('catches off-topic questions via intent detector', async () => {
     const bot = await getTestBot();
@@ -40,7 +43,7 @@ describe('Query Pipeline (integration)', () => {
 
     expect(res.sessionId).toBeTruthy();
     expect(typeof res.sessionId).toBe('string');
-  });
+  }, LLM_TIMEOUT);
 
   it('preserves session across queries', async () => {
     const bot = await getTestBot();
@@ -52,7 +55,7 @@ describe('Query Pipeline (integration)', () => {
     const history = await bot.getSession(res1.sessionId);
     // 2 user messages + 2 assistant messages = 4
     expect(history.length).toBe(4);
-  });
+  }, LLM_TIMEOUT);
 
   it('health check passes', async () => {
     const bot = await getTestBot();
@@ -80,7 +83,7 @@ describe('FAQ Management (integration)', () => {
 
     // Clean up
     await bot.deleteFAQ(id);
-  });
+  }, LLM_TIMEOUT);
 
   it('can list all active FAQs', async () => {
     const bot = await getTestBot();

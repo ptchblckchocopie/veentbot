@@ -14,8 +14,10 @@ export async function getTestBot(): Promise<FAQBot> {
         baseUrl: process.env.OLLAMA_BASE_URL || 'http://localhost:11434',
       },
       llm: {
-        provider: 'gemini',
+        provider: (process.env.LLM_PROVIDER as 'gemini' | 'ollama') || 'ollama',
         apiKey: process.env.GEMINI_API_KEY || '',
+        model: process.env.LLM_MODEL,
+        baseUrl: process.env.OLLAMA_BASE_URL || 'http://localhost:11434',
       },
     });
   }
